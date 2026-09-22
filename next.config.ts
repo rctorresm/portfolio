@@ -1,24 +1,11 @@
 import type { NextConfig } from "next";
 
 const nextConfig: NextConfig = {
-  // Same baseline protections as the expense tracker: no framing, no
-  // content-type guessing, no leaking full URLs, no camera/mic/location.
-  async headers() {
-    return [
-      {
-        source: "/(.*)",
-        headers: [
-          { key: "X-Frame-Options", value: "DENY" },
-          { key: "X-Content-Type-Options", value: "nosniff" },
-          { key: "Referrer-Policy", value: "strict-origin-when-cross-origin" },
-          {
-            key: "Permissions-Policy",
-            value: "camera=(), microphone=(), geolocation=()",
-          },
-        ],
-      },
-    ];
-  },
+  // Static export for Cloudflare Pages: no database, no server actions, no
+  // API routes here, so there's no server to host. `headers()` below isn't
+  // supported in export mode (needs a live server) — the same protections
+  // are set instead via public/_headers, Cloudflare Pages' own convention.
+  output: "export",
 };
 
 export default nextConfig;
