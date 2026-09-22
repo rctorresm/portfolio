@@ -4,6 +4,12 @@ import Section from "@/components/section";
 // placeholder text. Wording is on hold (Roberto's writing it separately);
 // only structure, links, and layout are real. Links/emails ARE real.
 
+// Chrome Web Store listing is Unlisted (not searchable), so its URL only
+// exists if Roberto hands it over directly; nothing to guess or scrape.
+// Leave null until he sends it, same null-until-real pattern as
+// SUPPORT_EMAIL on the expense tracker.
+const SIDEBIT_STORE_URL: string | null = null;
+
 function ProjectLink({ href, label }: { href: string; label: string }) {
   return (
     <a
@@ -18,6 +24,24 @@ function ProjectLink({ href, label }: { href: string; label: string }) {
         <path d="M7 17 17 7M7 7h10v10" />
       </svg>
     </a>
+  );
+}
+
+// A stand-in for real screenshots Roberto plans to add later. Purely a
+// layout placeholder, never meant to ship as-is.
+function ScreenshotPlaceholder({ count = 2 }: { count?: number }) {
+  return (
+    <div className="mt-6 flex gap-3">
+      {Array.from({ length: count }).map((_, i) => (
+        <div
+          key={i}
+          className="flex h-28 flex-1 items-center justify-center rounded-lg border border-dashed text-xs"
+          style={{ borderColor: "var(--accent)", color: "var(--text-muted)" }}
+        >
+          Screenshot
+        </div>
+      ))}
+    </div>
   );
 }
 
@@ -89,8 +113,11 @@ export default function Home() {
             href="https://github.com/rctorresm/sidebit"
             label="View on GitHub"
           />
-          {/* TODO: add the Chrome Web Store listing link once Roberto sends it */}
+          {SIDEBIT_STORE_URL && (
+            <ProjectLink href={SIDEBIT_STORE_URL} label="Chrome Web Store" />
+          )}
         </div>
+        <ScreenshotPlaceholder />
       </Section>
 
       {/* 5. Calendar Reminder */}
@@ -103,13 +130,13 @@ export default function Home() {
           eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim
           ad minim veniam, quis nostrud exercitation ullamco laboris.
         </p>
-        <div className="flex flex-wrap gap-3">
-          <ProjectLink
-            href="https://github.com/rctorresm/calendar-reminder"
-            label="View on GitHub"
-          />
-          {/* TODO: add a packaged-app download link once one exists */}
-        </div>
+        {/* Not distributed anywhere: source and write-up only, no download
+            link. Confirmed with Roberto 2026-09-22, not a placeholder gap. */}
+        <ProjectLink
+          href="https://github.com/rctorresm/calendar-reminder"
+          label="View on GitHub"
+        />
+        <ScreenshotPlaceholder />
       </Section>
 
       {/* 6. Contact */}
