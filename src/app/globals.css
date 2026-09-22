@@ -1,0 +1,27 @@
+@import "tailwindcss";
+
+/* Permanently dark, no light-mode toggle: a deliberate design choice for
+   this site (unlike the expense tracker, which supports both). Base
+   surface/text tokens are shared by every section; --accent is set per
+   section (inline style on the <Section> wrapper) so headings, links and
+   highlights pick up that section's own color via var(--accent). */
+:root {
+  color-scheme: dark;
+  --bg-deep: #0b0e11;
+  --bg-card: #14181d;
+  --text-primary: #f4f4f5;
+  --text-muted: #9ca3af;
+}
+
+@theme {
+  --color-deep: #0b0e11;
+  --color-card: #14181d;
+  --color-ink: #f4f4f5;
+  --color-dim: #9ca3af;
+}
+
+html,
+body {
+  background: var(--bg-deep);
+  color: var(--text-primary);
+}
