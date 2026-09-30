@@ -4,11 +4,10 @@ import Section from "@/components/section";
 // placeholder text. Wording is on hold (Roberto's writing it separately);
 // only structure, links, and layout are real. Links/emails ARE real.
 
-// Chrome Web Store listing is Unlisted (not searchable), so its URL only
-// exists if Roberto hands it over directly; nothing to guess or scrape.
-// Leave null until he sends it, same null-until-real pattern as
-// SUPPORT_EMAIL on the expense tracker.
-const SIDEBIT_STORE_URL: string | null = null;
+// Sidebit's public Chrome Web Store listing. The source repository is
+// private, so this is the only Sidebit link.
+const SIDEBIT_STORE_URL =
+  "https://chromewebstore.google.com/detail/sidebit/jjfbbgcgibcgoiamndgbkoodjdpbmmpl";
 
 function ProjectLink({ href, label }: { href: string; label: string }) {
   return (
@@ -109,13 +108,7 @@ export default function Home() {
           ad minim veniam, quis nostrud exercitation ullamco laboris.
         </p>
         <div className="flex flex-wrap gap-3">
-          <ProjectLink
-            href="https://github.com/rctorresm/sidebit"
-            label="View on GitHub"
-          />
-          {SIDEBIT_STORE_URL && (
-            <ProjectLink href={SIDEBIT_STORE_URL} label="Chrome Web Store" />
-          )}
+          <ProjectLink href={SIDEBIT_STORE_URL} label="Chrome Web Store" />
         </div>
         <ScreenshotPlaceholder />
       </Section>
