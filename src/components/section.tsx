@@ -1,5 +1,4 @@
 import type { CSSProperties } from "react";
-import ScrollCue from "@/components/scroll-cue";
 
 /** One full-screen, snap-to card. Each section carries its own palette:
  * `accent` (headings, links), `bg` (the page color while this section is on
@@ -13,7 +12,6 @@ export default function Section({
   kicker,
   children,
   next,
-  last = false,
   wide = false,
 }: {
   id: string;
@@ -23,7 +21,6 @@ export default function Section({
   kicker: string;
   children: React.ReactNode;
   next?: string;
-  last?: boolean;
   wide?: boolean;
 }) {
   const style = {
@@ -35,8 +32,10 @@ export default function Section({
     <section
       id={id}
       data-bg={bg}
+      data-accent={accent}
+      data-next={next}
       style={style}
-      className="section-glow relative flex min-h-[100dvh] w-full shrink-0 snap-start flex-col items-center justify-center px-6 py-24"
+      className="section-glow relative flex min-h-[100dvh] w-full shrink-0 snap-start flex-col items-center justify-center pb-32 pl-6 pr-14 pt-16 md:px-16"
     >
       <div className={`reveal ${wide ? "w-full max-w-5xl" : "w-full max-w-xl"}`}>
         <p
@@ -47,7 +46,6 @@ export default function Section({
         </p>
         {children}
       </div>
-      {!last && <ScrollCue label={next} />}
     </section>
   );
 }

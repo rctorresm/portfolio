@@ -15,34 +15,33 @@ const THEMES = {
   amber: { accent: "#f2b134", bg: "#2a1f0c", dim: "#e6d3a8" },
   indigo: { accent: "#818cf8", bg: "#1c1d48", dim: "#c7caf5" },
   teal: { accent: "#2dd4bf", bg: "#0a3b38", dim: "#ade0da" },
-  tealDeep: { accent: "#2dd4bf", bg: "#072e2c", dim: "#ade0da" },
   coral: { accent: "#fb7185", bg: "#431824", dim: "#f3c6cd" },
   sky: { accent: "#38bdf8", bg: "#0a3550", dim: "#b9dff2" },
 };
 
 const EXPENSE_MEDIA: MediaItem[] = [
-  { kind: "video", src: "/video/expense-tracker.mp4", poster: "/img/expenses-poster.webp", label: "Demo", alt: "A short screen recording of Expense Tracker in use" },
-  { kind: "image", src: "/img/expenses-personal.webp", label: "Personal", alt: "Expense Tracker's personal view: monthly total, category budgets and an Add expense button" },
-  { kind: "image", src: "/img/expenses-group.webp", label: "Shared group", alt: "The Roommates group with an invite code and a shared expense list" },
-  { kind: "image", src: "/img/x-goals.webp", label: "Goals", alt: "Savings goals with target amounts and dates" },
-  { kind: "image", src: "/img/x-dark.webp", label: "Dark mode", alt: "Expense Tracker in dark mode" },
-  { kind: "image", src: "/img/x-spanish.webp", label: "Spanish", alt: "Expense Tracker in Spanish" },
+  { kind: "video", src: "/video/expense-tracker.mp4", poster: "/img/expenses-poster.webp", label: "Video", alt: "A short screen recording of Expense Tracker in use" },
+  { kind: "image", src: "/img/expenses-personal.webp", portrait: true, label: "Personal", alt: "Expense Tracker's personal view: monthly total, category budgets and an Add expense button" },
+  { kind: "image", src: "/img/expenses-group.webp", portrait: true, label: "Shared group", alt: "The Roommates group with an invite code and a shared expense list" },
+  { kind: "image", src: "/img/x-goals.webp", portrait: true, label: "Goals", alt: "Savings goals with target amounts and dates" },
+  { kind: "image", src: "/img/x-dark.webp", portrait: true, label: "Dark mode", alt: "Expense Tracker in dark mode" },
+  { kind: "image", src: "/img/x-spanish.webp", portrait: true, label: "Spanish", alt: "Expense Tracker in Spanish" },
 ];
 
 const SIDEBIT_MEDIA: MediaItem[] = [
-  { kind: "video", src: "/video/sidebit.mp4", poster: "/img/sidebit-poster.webp", label: "Overview", alt: "A short overview video of Sidebit" },
+  { kind: "video", src: "/video/sidebit.mp4", poster: "/img/sidebit-poster.webp", label: "Video", alt: "A short overview video of Sidebit" },
   { kind: "image", src: "/img/sidebit-docked.webp", label: "Beside your work", alt: "Sidebit docked in Chrome's side panel beside a web page, with saved snippets, a highlight and notes" },
-  { kind: "image", src: "/img/s-panel.webp", label: "The panel", alt: "The Sidebit side panel with notes, snippets and saved highlights" },
-  { kind: "image", src: "/img/s-reminder.webp", label: "Reminders", alt: "Setting a reminder in Sidebit" },
-  { kind: "image", src: "/img/s-dark.webp", label: "Dark theme", alt: "Sidebit in its dark theme" },
-  { kind: "image", src: "/img/s-spanish.webp", label: "Spanish", alt: "Sidebit in Spanish" },
+  { kind: "image", src: "/img/s-panel.webp", portrait: true, label: "The panel", alt: "The Sidebit side panel with notes, snippets and saved highlights" },
+  { kind: "image", src: "/img/s-reminder.webp", portrait: true, label: "Reminders", alt: "Setting a reminder in Sidebit" },
+  { kind: "image", src: "/img/s-dark.webp", portrait: true, label: "Dark theme", alt: "Sidebit in its dark theme" },
+  { kind: "image", src: "/img/s-spanish.webp", portrait: true, label: "Spanish", alt: "Sidebit in Spanish" },
 ];
 
 const CALENDAR_MEDIA: MediaItem[] = [
   { kind: "image", src: "/img/calendar-alert.webp", label: "The alert", alt: "Calendar Reminder on Windows: an upcoming-events list with a red-bordered alert that stays on top until acknowledged" },
   { kind: "image", src: "/img/c-events.webp", label: "Upcoming events", alt: "The list of upcoming events across shared calendars" },
-  { kind: "image", src: "/img/c-picker.webp", label: "Pick calendars", alt: "Choosing which calendars to watch" },
-  { kind: "image", src: "/img/c-settings.webp", label: "Settings", alt: "Calendar Reminder settings" },
+  { kind: "image", src: "/img/c-picker.webp", portrait: true, label: "Pick calendars", alt: "Choosing which calendars to watch" },
+  { kind: "image", src: "/img/c-settings.webp", portrait: true, label: "Settings", alt: "Calendar Reminder settings" },
 ];
 
 function ProjectLink({ href, label }: { href: string; label: string }) {
@@ -117,7 +116,7 @@ export default function Home() {
       </Section>
 
       {/* 3. Expense Tracker */}
-      <Section id="expense-tracker" {...THEMES.teal} next="Your information" kicker="Project 01 · Web app" wide>
+      <Section id="expense-tracker" {...THEMES.teal} next="Sidebit" kicker="Project 01 · Web app" wide>
         <div className="flex flex-col gap-8 md:flex-row md:items-center md:gap-14">
           <div className="md:w-2/5">
             <h2 className="mb-3 text-2xl font-medium sm:text-3xl">
@@ -134,24 +133,6 @@ export default function Home() {
           <div className="md:w-3/5">
             <ProjectMedia items={EXPENSE_MEDIA} />
           </div>
-        </div>
-      </Section>
-
-      <Section id="your-information" {...THEMES.tealDeep} next="Sidebit" kicker="A note about your information">
-        <h2 className="mb-5 text-2xl font-medium sm:text-3xl">You should know where your information goes.</h2>
-        <p className="mb-5 text-base leading-relaxed text-dim">
-          I built Expense Tracker to help with everyday spending. I have no
-          interest in using your personal information for anything beyond
-          running the app. It’s a project I build and run myself.
-        </p>
-        <dl className="mb-6 space-y-4 rounded-xl border border-white/10 bg-black/25 p-5 text-sm leading-relaxed">
-          <div><dt className="font-medium">Where it lives</dt><dd className="mt-1 text-dim">The app is hosted on Vercel. The information you enter is stored in Supabase’s hosted database.</dd></div>
-          <div><dt className="font-medium">What you share</dt><dd className="mt-1 text-dim">Personal entries are separate from shared groups. Members can see the information entered in their group.</dd></div>
-          <div><dt className="font-medium">If you decide to leave</dt><dd className="mt-1 text-dim">You can delete your account in the app. Shared group entries remain for the other members, detached from your account. The privacy page explains the details.</dd></div>
-        </dl>
-        <div className="flex flex-wrap gap-3">
-          <ProjectLink href="https://expenses.nexbit.dev/privacy" label="Read about privacy" />
-          <ProjectLink href="mailto:expenses@nexbit.dev" label="Ask me a question" />
         </div>
       </Section>
 
@@ -207,7 +188,7 @@ export default function Home() {
       </Section>
 
       {/* 6. Contact */}
-      <Section id="contact" {...THEMES.amber} kicker="Get in touch" last>
+      <Section id="contact" {...THEMES.amber} kicker="Get in touch">
         <h2 className="mb-5 text-2xl font-medium sm:text-3xl">
           You can talk to the person who built it.
         </h2>
